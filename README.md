@@ -1,1 +1,1 @@
-Run this project in Docker.  Dockerfile is included<BR>
+Run this project in Docker.  <BR>Dockerfile is included<BR>
