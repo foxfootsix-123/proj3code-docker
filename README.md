@@ -1,1 +1,5 @@
-Run this project in Docker.  <BR>Dockerfile is included<BR>
+Run this project in Docker.  <BR>My Dockerfile is included<BR>
+### Building and running the application
+When you're ready, start the application by running:
+`docker compose up --build`
+Your application will be available at http://localhost.
