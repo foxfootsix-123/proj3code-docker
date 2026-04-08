@@ -1,0 +1,28 @@
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+bDebug=False
+IsLocal=Yes
+strFileSave=globalkeep.20260408-083013-328890-00000.txt
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260408-083013-328890-00000.txt
+strAIWord=MANGO
+strAICategory=THING
+strAILength=5
+strAIHint=Fruit that’s often yellow-green or orange, with a big flat pit in the middle.
+strSession=globalkeep.20260408-083013-328890-00000.txt
+=
+htmlHeader=*Guess My Word.*<BR>Can you guess my word?<BR>
+htmlFooter=Guess My Word.  Can you guess my word?<BR>
+htmlContent=Can you guess my word?
+htmlHint=Hint:  Fruit that’s often yellow-green or orange, with a big flat pit in the middle.
+htmlInfo=My word is a THING and has 5 letters.
+htmlForm=<FORM action='http://127.0.0.1:5000/formpost' method='get'>Word guess:  <input type='text' name='wordguess' value=''/><input type='submit' value='Send'/><BR>---<BR>Name (save a score):  <input type='text' name='username' value=''/><BR><input type='hidden' name='session' value='globalkeep.20260408-083013-328890-00000.txt'/><BR></FORM>

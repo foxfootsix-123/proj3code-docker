@@ -1,0 +1,28 @@
+strFileSave=globalkeep.20260407-090445-167819-00000.txt
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+strSession=globalkeep.20260407-090445-167819-00000.txt
+=
+bDebug=False
+IsLocal=Yes
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260407-090445-167819-00000.txt
+strAIWord=NEBULA
+strAICategory=Place
+strAILength=6
+strAIHint=Think of the vast, colorful “nursery” in space where stars are born. It’s a type of glowing cloud made mostly of gas and dust, often seen by astronomers through telescopes.
+htmlHeader=*Guess My Word.*<BR>You have guessed my word.<BR>  You guessed CANDLE.
+htmlFooter=Guess My Word.  You have guessed my word.<BR>
+htmlContent=CANDLE  [*]<BR>You guessed my word -CANDLE-.  Guess Count: 1<BR>
+htmlHint=New Hint:  Think of the vast, colorful “nursery” in space where stars are born. It’s a type of glowing cloud made mostly of gas and dust, often seen by astronomers through telescopes.
+htmlInfo=I have a new word.  It is a Place and has 6 letters.
+htmlForm=<FORM action='http://127.0.0.1:5000/formpost' method='get'>Word guess:  <input type='text' name='wordguess' value=''/><input type='submit' value='Send'/><BR>---<BR>Name (save a score):  <input type='text' name='username' value=''/><BR><input type='hidden' name='session' value='globalkeep.20260407-090445-167819-00000.txt'/><BR></FORM>

@@ -1,0 +1,28 @@
+strFileSave=globalkeep.20260405-172917-992514-00000.txt
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+strSession=globalkeep.20260405-172917-992514-00000.txt
+=
+bDebug=False
+IsLocal=Yes
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260405-172917-992514-00000.txt
+strAIWord=WHISPER
+strAICategory=verb
+strAILength=7
+strAIHint=It’s a very quiet way of speaking—so soft that you’re barely heard, often used when you don’t want others to notice.
+htmlHeader=*Guess My Word.*<BR>You have guessed my word.<BR>  You guessed MUSHROOM.
+htmlFooter=Guess My Word.  You have guessed my word.<BR>
+htmlContent=PARK  [XXXX]<BR>  ASSIST  [  XXOXXX]<BR> 'PARALLEL'  [ 'XXXXXXXX']<BR>MUSHROOM  [*]<BR>You guessed my word -MUSHROOM-.  Guess Count: 4<BR>
+htmlHint=Hint:  It’s a very quiet way of speaking—so soft that you’re barely heard, often used when you don’t want others to notice.
+htmlInfo=My word is a verb and has 7 letters.
+htmlForm=<FORM action='http://127.0.0.1:5000/formpost' method='get'>Word guess:  <input type='text' name='wordguess' value=''/><input type='submit' value='Send'/><BR>---<BR>Name (save a score):  <input type='text' name='username' value=''/><BR><input type='hidden' name='session' value='globalkeep.20260405-172917-992514-00000.txt'/><BR></FORM>
