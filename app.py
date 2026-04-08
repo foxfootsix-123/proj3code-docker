@@ -25,7 +25,7 @@ def APP_after(dictIn):
 def APP_home(dictHome,strInSession):
     dictHome["htmlHeader"]="*Guess My AI Word.*<BR>Can you guess my AI word?<BR>"
     dictHome["htmlFooter"]="Guess My AI Word.  Can you guess my AI word?<BR>"
-    dictHome["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>Game created by Ke Bao and Dandan Shao.</FONT>"
+    dictHome["htmlFooter"]=dictHome["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
     dictHome["htmlContent"]="Can you guess my AI word?"
     dictHome["htmlHint"]="AI Hint:  "+dictHome["strAIHint"]
     dictHome["htmlInfo"]=f"My word is a {dictHome["strAICategory"]} and has {dictHome["strAILength"]} letters."
@@ -50,9 +50,10 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlHeader"]="*Guess My AI Word.*<BR>Can you guess my AI word?<BR>  You guessed "+dictDraw["strWordGuess"]+"."
     if(strInUsername==""):
         dictDraw["htmlFooter"]="Guess My AI Word.  Can you guess my AI word?<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>Game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
     else:
         dictDraw["htmlFooter"]="*Guess My AI Word, "+strInUsername+"*<BR>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
 #
     dictDraw["htmlContent"]=""
     listChecks=dictDraw["listChecks"]
@@ -95,10 +96,10 @@ def APP_win(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlHeader"]="*Guess My AI Word.*<BR>You have guessed my AI word.<BR>  You guessed "+dictDraw["strWordGuess"]+"."
     if(strInUsername==""):
         dictDraw["htmlFooter"]="Guess My AI Word.  You have guessed my AI word.<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>Game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
     else:
         dictDraw["htmlFooter"]="*Guess My AI Word, "+strInUsername+"* You have guessed my AI word.<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>Game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
 #
     dictDraw["htmlContent"]=""
     listChecks=dictDraw["listChecks"]
