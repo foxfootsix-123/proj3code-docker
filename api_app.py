@@ -9,7 +9,7 @@ from flask import request
 import json
 from app import *
 #
-apiAPP=Flask(___name__)
+apiAPP=Flask(__name__)
 # #
 #--------------------------------------------------------------------------#
 #Function:  API_APP_Call()
@@ -37,4 +37,4 @@ def API_APP_Call():
     return jsonReturn
 #
 if(__name__=="__main__"):
-    apiAPP.run(Debug=True)
+    apiAPP.run(Debug=True,port=5051)

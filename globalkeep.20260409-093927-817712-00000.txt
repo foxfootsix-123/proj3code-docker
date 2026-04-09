@@ -1,0 +1,28 @@
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+bDebug=False
+IsLocal=Yes
+strFileSave=globalkeep.20260409-093927-817712-00000.txt
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260409-093927-817712-00000.txt
+strAIWord=CARPET
+strAICategory=THING
+strAILength=6
+strAIHint=Hint: It’s something you can step on inside a building, often used to cover the floor and make a room feel warmer and quieter.
+strSession=globalkeep.20260409-093927-817712-00000.txt
+=
+htmlHeader=*Guess My AI Word.*<BR>Can you guess my AI word?<BR>
+htmlFooter=Guess My AI Word.  Can you guess my AI word?<BR><FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>
+htmlContent=Can you guess my AI word?
+htmlHint=AI Hint:  Hint: It’s something you can step on inside a building, often used to cover the floor and make a room feel warmer and quieter.
+htmlInfo=My word is a THING and has 6 letters.
+htmlForm=<FORM action='http://127.0.0.1:80/formpost' method='get'>Word guess:  <input type='text' name='wordguess' value=''/><input type='submit' value='Send'/><BR>---<BR>Name (save a score):  <input type='text' name='username' value=''/><BR><input type='hidden' name='session' value='globalkeep.20260409-093927-817712-00000.txt'/><BR></FORM>

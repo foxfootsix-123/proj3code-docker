@@ -41,4 +41,4 @@ def API_GLOBALKEEP_Call():
     return jsonReturn
 #
 if(__name__=="__main__"):
-    apiGLOBALKEEP.run(Debug=True)
+    apiGLOBALKEEP.run(Debug=True,port=5050)

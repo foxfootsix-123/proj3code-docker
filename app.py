@@ -31,7 +31,7 @@ def APP_home(dictHome,strInSession):
     dictHome["htmlInfo"]=f"My word is a {dictHome["strAICategory"]} and has {dictHome["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictHome["IsLocal"]!="No"):
-       strForm="<FORM action='http://127.0.0.1:80/formpost' method='get'>"
+       strForm="<FORM action='http://localhost/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
@@ -77,7 +77,7 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlInfo"]=f"My AI word is a {dictDraw["strAICategory"]} and has {dictDraw["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictDraw["IsLocal"]!="No"):
-       strForm="<FORM action='http://127.0.0.1:80/formpost' method='get'>"
+       strForm="<FORM action='http://localhost/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
@@ -123,7 +123,7 @@ def APP_win(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlInfo"]=f"I have a new AI word.  It is a {dictDraw["strAICategory"]} and has {dictDraw["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictDraw["IsLocal"]!="No"):
-       strForm="<FORM action='http://127.0.0.1:80/formpost' method='get'>"
+       strForm="<FORM action='http://localhost/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
