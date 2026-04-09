@@ -1,11 +1,6 @@
-#from openai import OpenAI
-#import requests
 import time
 import os
 from openai import OpenAI
-#import OpenAI
-#import openai
-#from openai import OpenAI
 import requests
 #
 #----------------------------------------------------------------------------#
@@ -88,8 +83,8 @@ def AILINK_GetHint(dictAILINK,strInWord):
     openaiClient = dictAILINK["openaiClient"]
     strInput = "Will you give me a hint for this word, "+strInWord+"?"
     strInput = strInput + "I am using the word for a word guessing game."
-    strInput = strInput + "Do not use the word in the hint text."
-    strInput = strInput + "Do not put the prefix 'Sure! **Hint:** '."
+    strInput = strInput + "Do not put the word in the hint text."
+    strInput = strInput + "Do not answer with the prefix 'Sure! **Hint:** '."
     timeTimer = time.time()
     dictOut = openaiClient.responses.create(model="gpt-5.4-nano",
                             input=strInput)

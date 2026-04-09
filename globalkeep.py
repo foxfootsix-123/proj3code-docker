@@ -5,8 +5,9 @@ from flask import redirect,url_for,render_template,jsonify
 from flask import request
 import requests
 from datetime import datetime
-from ailink import *
-from getguess import *
+#from ailink import *
+#from getguess import *
+import json
 #
 #----------------------------------------------------------------------------#
 #Function:  GLOBALKEEP_Constants()
@@ -353,3 +354,4 @@ def GLOBALKEEP_Close(dictIn):
     dictIn.fileGLOBAL=None
 #    self.strFileSave=None
     return dictIn
+#
