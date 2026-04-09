@@ -37,4 +37,5 @@ def API_APP_Call():
     return jsonReturn
 #
 if(__name__=="__main__"):
-    apiAPP.run(Debug=True,port=5051)
+    apiAPP.run(Debug=True)
+#    apiAPP.run(Debug=True,port=5051)
