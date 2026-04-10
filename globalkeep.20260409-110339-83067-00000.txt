@@ -1,0 +1,20 @@
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+bDebug=False
+IsLocal=Yes
+strFileSave=globalkeep.20260409-110339-83067-00000.txt
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260409-110339-83067-00000.txt
+strAIWord=GIRAFFE
+strAICategory=ANIMAL
+strAILength=7
+strAIHint=Think of a very tall animal with a long neck, spotted coat, and it’s native to Africa—often seen reaching the leaves at the tops of trees.

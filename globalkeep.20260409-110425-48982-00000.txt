@@ -1,0 +1,20 @@
+strDelim==
+strDot=.
+strBackSlash=\
+strCR=
+strLF=
+
+strFilename=
+fileGLOBAL=None
+bDebug=False
+IsLocal=Yes
+strFileSave=globalkeep.20260409-110425-48982-00000.txt
+strWordGuess=
+strGuessCount=0
+listWords=[]
+listChecks=[]
+strSessionID=globalkeep.20260409-110425-48982-00000.txt
+strAIWord=WHISPER
+strAICategory=VERB
+strAILength=7
+strAIHint=Think of a very quiet way of speaking—so soft that it’s almost like a secret being shared. It’s also something you might hear in a calm, low voice when there’s no loud conversation.
