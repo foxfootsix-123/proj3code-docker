@@ -619,30 +619,37 @@ def home():
     strSession=GLOBALKEEP_GetNewSessionID(dictHome,"globalkeep.txt")
     dictHome["strFileSave"]=strSession
     #
-    dictAILINK=dict()
-    AILINK_Open(dictAILINK)
-    strTemp=AILINK_GetWord(dictAILINK)
-    dictHome["strAIWord"]=dictAILINK["strGuessWord"].upper()
-    dictHome["strAICategory"]=dictAILINK["strGuessCategory"].upper()
-    dictHome["strAILength"]=str(dictAILINK["nGuessLength"])
-    strAIHint=AILINK_GetHint(dictAILINK,dictHome["strAIWord"])
-    AILINK_Close(dictAILINK)
-    dictAILINK.clear()
-    dictAILINK=None
-    dictHome["strAIHint"]=strAIHint
+    responseOut=request.get("http://127.0.0.1:5052/register_getwhere/ailink")
+    strOut=responseOut.json()
+    dictOut=eval(strOut)
+    strURL=dictOut["return"]
+    dictIn=dict()
+    dictIn["function"]="API_AILINK_GetInfo()"
+    dictIn["jsonString"]=str(dictHome)
+    strURL=strURL+"ailink_info"
+    responseOut=request.get(strURL,params=dictIn)
+    strOut=str(responseOut.json())
+    dictOut=eval(strOut)
+    dictHome["strAIWord"]=strOut["strAIWord"]
+    dictHome["strAICategory"]=strOut["strAICategory"]
+    dictHome["strAILength"]=strOut["strAILength"]
+    dictHome["strAIHint"]=strOut["strAIHint"]
+    #
+    # dictAILINK=dict()
+    # AILINK_Open(dictAILINK)
+    # strTemp=AILINK_GetWord(dictAILINK)
+    # dictHome["strAIWord"]=dictAILINK["strGuessWord"].upper()
+    # dictHome["strAICategory"]=dictAILINK["strGuessCategory"].upper()
+    # dictHome["strAILength"]=str(dictAILINK["nGuessLength"])
+    # strAIHint=AILINK_GetHint(dictAILINK,dictHome["strAIWord"])
+    # AILINK_Close(dictAILINK)
+    # dictAILINK.clear()
+    # dictAILINK=None
+    # dictHome["strAIHint"]=strAIHint
     #
     GLOBALKEEP_SessionWrite(dictHome,strSession)
-    GLOBALKEEP_SessionRead(dictHome,strSession)
-#
-#    dictHome = APP_home(dictHome,strSession)
-    dictCall=dict()
-    dictCall["function"]="APP_home"
-    strCall=jsonify(dictHome)
-    dictCall["jsonString"]=strCall
-    responseOut=requests.get(url="http://localhost:5051/app_call",params=dictCall)
-    strOut=responseOut.json()
-
-#
+    GLOBALKEEP_SessionRead(dictHome,strSession)    
+    dictHome = APP_home(dictHome,strSession)
     htmlHeader=dictHome["htmlHeader"]
     htmlFooter=dictHome["htmlFooter"]
     htmlContent=dictHome["htmlContent"]

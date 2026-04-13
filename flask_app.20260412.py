@@ -634,14 +634,13 @@ def home():
     GLOBALKEEP_SessionWrite(dictHome,strSession)
     GLOBALKEEP_SessionRead(dictHome,strSession)
 #
-#    dictHome = APP_home(dictHome,strSession)
-    dictCall=dict()
-    dictCall["function"]="APP_home"
-    strCall=jsonify(dictHome)
-    dictCall["jsonString"]=strCall
-    responseOut=requests.get(url="http://localhost:5051/app_call",params=dictCall)
-    strOut=responseOut.json()
-
+    dictHome = APP_home(dictHome,strSession)
+    # dictCall=dict()
+    # dictCall["function"]="APP_home"
+    # strCall=jsonify(dictHome)
+    # dictCall["jsonString"]=strCall
+    # responseOut=requests.get(url="http://localhost:5051/app_call",params=dictCall)
+    # strOut=responseOut.json()
 #
     htmlHeader=dictHome["htmlHeader"]
     htmlFooter=dictHome["htmlFooter"]
