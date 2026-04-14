@@ -37,8 +37,8 @@ def APP_home(dictHome,strInSession):
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
     strForm=strForm+"<input type='submit' value='Send'/><BR>"
     strForm=strForm+"---<BR>"
-    strForm=strForm+"Name (save a score):  <input type='text' name='username' value=''/><BR>"
     strForm=strForm+"<input type='hidden' name='session' value='"+strInSession+"'/><BR>"
+    strForm=strForm+"Name (save a score):  <input type='text' name='username' value=''/><BR>"
     strForm=strForm+"</FORM>"
     dictHome["htmlForm"]=strForm
     return dictHome
@@ -72,6 +72,7 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
 #
     dictDraw["htmlContent"]=dictDraw["htmlContent"]+"The guess was "+dictDraw["strWordGuess"]+"."
     dictDraw["htmlContent"]=dictDraw["htmlContent"]+"  Guess Count: "+dictDraw["strGuessCount"]+"<BR>"
+    dictDraw["htmlContent"]=dictDraw["htmlContent"]+"  Total score: "+dictDraw["strScorekeep"]+"<BR>"
 #
     dictDraw["htmlHint"]="AI Hint:  "+dictDraw["strAIHint"]
     dictDraw["htmlInfo"]=f"My AI word is a {dictDraw["strAICategory"]} and has {dictDraw["strAILength"]} letters."
@@ -83,8 +84,8 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
     strForm=strForm+"<input type='submit' value='Send'/><BR>"
     strForm=strForm+"---<BR>"
-    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername+"'/><BR>"
     strForm=strForm+"<input type='hidden' name='session' value='"+strInSession+"'/><BR>"
+    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername+"'/><BR>"
     strForm=strForm+"</FORM>"
     dictDraw["htmlForm"]=strForm
     return dictDraw
@@ -130,8 +131,8 @@ def APP_win(dictDraw,strInSession,strInWordGuess,strInUsername):
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
     strForm=strForm+"<input type='submit' value='Send'/><BR>"
     strForm=strForm+"---<BR>"
-    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername.upper()+"'/><BR>"
     strForm=strForm+"<input type='hidden' name='session' value='"+strInSession+"'/><BR>"
+    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername.upper()+"'/><BR>"
     strForm=strForm+"</FORM>"
     dictDraw["htmlForm"]=strForm
     return dictDraw

@@ -7,7 +7,7 @@ from flask import redirect,url_for,render_template,jsonify
 from flask import request
 import requests
 from datetime import datetime
-from ailink import *
+#from ailink import *
 from getguess import *
 from globalkeep import *
 from app import *
@@ -542,6 +542,7 @@ def formpost():
         strWordGuess=request.form("wordguess")
         strUsername=request.form("username")
         strSession=request.form("session")
+    strUsername=strUsername.upper()
     dictDraw=dict()
     dictDraw["strFileSave"]=strSession
 #
@@ -561,27 +562,51 @@ def formpost():
     listChecks.append(strCheck)
     if(strCheck!="*"):
         #word has not been guessed
+        if(strUsername!=""):
+#            responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/scorekeep")
+            responseOut=requests.get("http://host.docker.internal:5052/register_getwhere/scorekeep")
+            dictOut=responseOut.json()
+            strURL=dictOut["return"]
+            dictIn=dict()
+            dictIn["function"]="API_SCOREKEEP_GetScore()"
+            dictIn["username"]=strUsername
+            strURL=strURL+"scorekeep_get"
+            responseOut=requests.get(strURL,params=dictIn)
+            if(responseOut.status_code<400):
+                dictOut=responseOut.json()
+                nTotal=dictOut["return"]
+                dictDraw["strScorekeep"]=str(nTotal)
+            else:
+                dictDraw["strScorekeep"]=str(0)
+        else:
+            dictDraw["strScorekeep"]=str(0)
         dictDraw = APP_guess(dictDraw,strSession,
                             strWordGuess,strUsername)
     else:
         #word has been guessed
-        strScorekeep=""
         if(strUsername!=""):
-            nScore=int(dictDraw["strAILength"])*10-int(dictDraw["strGuessCount"])
-            responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/scorekeep")
+            nScore=int(dictDraw["strAILength"])*5-int(dictDraw["strGuessCount"])
+#            responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/scorekeep")
+            responseOut=requests.get("http://host.docker.internal:5052/register_getwhere/scorekeep")
             dictOut=responseOut.json()
             strURL=dictOut["return"]
             dictIn=dict()
             dictIn["function"]="API_SCOREKEEP_AddScore()"
             dictIn["username"]=strUsername
             dictIn["addscore"]=str(nScore)
-            strURL=strURL+"scorekeep_addscore"
+            strURL=strURL+"scorekeep_add"
             responseOut=requests.get(strURL,params=dictIn)
-            dictOut=responseOut.json()
-            nTotal=dictOut["return"]
-            dictDraw["strScorekeep"]=str(nTotal)
+            if(responseOut.status_code<400):
+                dictOut=responseOut.json()
+                nTotal=dictOut["return"]
+                dictDraw["strScorekeep"]=str(nTotal)
+            else:
+                dictDraw["strScorekeep"]=str(0)
+        else:
+            dictDraw["strScorekeep"]=""
         #Request a new word
-        responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+#        responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+        responseOut=requests.get("http://host.docker.internal:5052/register_getwhere/ailink")
         dictOut=responseOut.json()
         strURL=dictOut["return"]
         dictIn=dict()
@@ -651,7 +676,8 @@ def home():
     strSession=GLOBALKEEP_GetNewSessionID(dictHome,"globalkeep.txt")
     dictHome["strFileSave"]=strSession
     #
-    responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+#    responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+    responseOut=requests.get("http://host.docker.internal:5052/register_getwhere/ailink")
     dictOut=responseOut.json()
     strURL=dictOut["return"]
     dictIn=dict()

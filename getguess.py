@@ -1,5 +1,5 @@
-from scorekeep import *
-from ailink import *
+#from scorekeep import *
+#from ailink import *
 import requests
 import os
 from flask import Flask
