@@ -19,7 +19,7 @@ def GLOBALKEEP_Constants(dictIn):
     dictIn["strCR"]=chr(13)
     dictIn["strLF"]=chr(10)
     dictIn["strFilename"]=""
-#    dictIn["IsLocal"]="Yes"
+    dictIn["IsLocal"]="Yes"
     dictIn["fileGLOBAL"]=None
 #    dictGLOBAL=dict()
     return dictIn
@@ -38,7 +38,7 @@ def GLOBALKEEP_Init(dictIn):
 #   dictIn["fileGLOBAL"]=None
 #    dictGLOBAL=dict()
     dictIn["bDebug"]=False
-    dictIn["IsLocal"]="Yes"
+#    dictIn["IsLocal"]="Yes"
     dictIn["strFileSave"]=None
     dictIn["strWordGuess"]=""
     dictIn["strGuessCount"]=str(0)

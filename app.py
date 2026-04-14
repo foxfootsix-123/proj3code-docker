@@ -25,13 +25,13 @@ def APP_after(dictIn):
 def APP_home(dictHome,strInSession):
     dictHome["htmlHeader"]="*Guess My AI Word.*<BR>Can you guess my AI word?<BR>"
     dictHome["htmlFooter"]="Guess My AI Word.  Can you guess my AI word?<BR>"
-    dictHome["htmlFooter"]=dictHome["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
+    dictHome["htmlFooter"]=dictHome["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 microservices game created by Ke and Dandan.</FONT>"
     dictHome["htmlContent"]="Can you guess my AI word?"
     dictHome["htmlHint"]="AI Hint:  "+dictHome["strAIHint"]
     dictHome["htmlInfo"]=f"My word is a {dictHome["strAICategory"]} and has {dictHome["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictHome["IsLocal"]!="No"):
-       strForm="<FORM action='http://localhost/formpost' method='get'>"
+       strForm="<FORM action='http://localhost:5000/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
@@ -50,10 +50,10 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlHeader"]="*Guess My AI Word.*<BR>Can you guess my AI word?<BR>  You guessed "+dictDraw["strWordGuess"]+"."
     if(strInUsername==""):
         dictDraw["htmlFooter"]="Guess My AI Word.  Can you guess my AI word?<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 microservices game created by Ke and Dandan.</FONT>"
     else:
         dictDraw["htmlFooter"]="*Guess My AI Word, "+strInUsername+"*<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 microservices game created by Ke and Dandan.</FONT>"
 #
     dictDraw["htmlContent"]=""
     listChecks=dictDraw["listChecks"]
@@ -77,7 +77,7 @@ def APP_guess(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlInfo"]=f"My AI word is a {dictDraw["strAICategory"]} and has {dictDraw["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictDraw["IsLocal"]!="No"):
-       strForm="<FORM action='http://localhost/formpost' method='get'>"
+       strForm="<FORM action='http://localhost:5000/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
@@ -96,10 +96,10 @@ def APP_win(dictDraw,strInSession,strInWordGuess,strInUsername):
     dictDraw["htmlHeader"]="*Guess My AI Word.*<BR>You have guessed my AI word.<BR>  You guessed "+dictDraw["strWordGuess"]+"."
     if(strInUsername==""):
         dictDraw["htmlFooter"]="Guess My AI Word.  You have guessed my AI word.<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 microservices game created by Ke and Dandan.</FONT>"
     else:
         dictDraw["htmlFooter"]="*Guess My AI Word, "+strInUsername+"* You have guessed my AI word.<BR>"
-        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 game created by Ke Bao and Dandan Shao.</FONT>"
+        dictDraw["htmlFooter"]=dictDraw["htmlFooter"]+"<FONT SIZE=3>CS540 Project 3 microservices game created by Ke and Dandan.</FONT>"
 #
     dictDraw["htmlContent"]=""
     listChecks=dictDraw["listChecks"]
@@ -118,18 +118,19 @@ def APP_win(dictDraw,strInSession,strInWordGuess,strInUsername):
 #
     dictDraw["htmlContent"]=dictDraw["htmlContent"]+"You guessed my AI word -"+dictDraw["strWordGuess"]+"-."
     dictDraw["htmlContent"]=dictDraw["htmlContent"]+"  Guess Count: "+dictDraw["strGuessCount"]+"<BR>"
+    dictDraw["htmlContent"]=dictDraw["htmlContent"]+"  Total score: "+dictDraw["strScorekeep"]+"<BR>"
 #
     dictDraw["htmlHint"]="New AI Hint:  "+dictDraw["strAIHint"]
     dictDraw["htmlInfo"]=f"I have a new AI word.  It is a {dictDraw["strAICategory"]} and has {dictDraw["strAILength"]} letters."
 #    strForm="<FORM action='http://phanes.pythonanywhere.com/formpost' method='get'>"
     if(dictDraw["IsLocal"]!="No"):
-       strForm="<FORM action='http://localhost/formpost' method='get'>"
+       strForm="<FORM action='http://localhost:5000/formpost' method='get'>"
     else:
        strForm="<FORM action='https://phanes.pythonanywhere.com/formpost' method='get'>"
     strForm=strForm+"Word guess:  <input type='text' name='wordguess' value=''/>"
     strForm=strForm+"<input type='submit' value='Send'/><BR>"
     strForm=strForm+"---<BR>"
-    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername+"'/><BR>"
+    strForm=strForm+"Name (save a score):  <input type='text' name='username' value='"+strInUsername.upper()+"'/><BR>"
     strForm=strForm+"<input type='hidden' name='session' value='"+strInSession+"'/><BR>"
     strForm=strForm+"</FORM>"
     dictDraw["htmlForm"]=strForm

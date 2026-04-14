@@ -536,11 +536,11 @@ app = Flask(__name__,
 def formpost():
     if(request.method=="GET"):
         strWordGuess=request.args.get("wordguess")
-        strUsername=request.args.get("username")
+        strUsername=request.args.get("username").upper()
         strSession=request.args.get("session")
     if(request.method=="POST"):
         strWordGuess=request.form("wordguess")
-        strUsername=request.form("username")
+        strUsername=request.form("username").upper()
         strSession=request.form("session")
     dictDraw=dict()
     dictDraw["strFileSave"]=strSession

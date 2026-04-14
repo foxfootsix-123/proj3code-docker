@@ -560,20 +560,52 @@ def formpost():
     listChecks=dictDraw["listChecks"]
     listChecks.append(strCheck)
     if(strCheck!="*"):
+        #word has not been guessed
         dictDraw = APP_guess(dictDraw,strSession,
                             strWordGuess,strUsername)
     else:
-        dictAILINK=dict()
-        AILINK_Open(dictAILINK)
-        strTemp=AILINK_GetWord(dictAILINK)
-        dictDraw["strAIWord"]=dictAILINK["strGuessWord"].upper()
-        dictDraw["strAICategory"]=dictAILINK["strGuessCategory"]
-        dictDraw["strAILength"]=str(dictAILINK["nGuessLength"])
-        strAIHint=AILINK_GetHint(dictAILINK,dictDraw["strAIWord"])
-        AILINK_Close(dictAILINK)
-        dictAILINK.clear()
-        dictAILINK=None
-        dictDraw["strAIHint"]=strAIHint
+        #word has been guessed
+        strScorekeep=""
+        if(strUsername!=""):
+            nScore=int(dictDraw["strAILength"])*10-int(dictDraw["strGuessCount"])
+            responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/scorekeep")
+            dictOut=responseOut.json()
+            strURL=dictOut["return"]
+            dictIn=dict()
+            dictIn["function"]="API_SCOREKEEP_AddScore()"
+            dictIn["username"]=strUsername
+            dictIn["addscore"]=str(nScore)
+            strURL=strURL+"scorekeep_addscore"
+            responseOut=requests.get(strURL,params=dictIn)
+            dictOut=responseOut.json()
+            nTotal=dictOut["return"]
+            dictDraw["strScorekeep"]=str(nTotal)
+        #Request a new word
+        responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+        dictOut=responseOut.json()
+        strURL=dictOut["return"]
+        dictIn=dict()
+        dictIn["function"]="API_AILINK_GetInfo()"
+        dictIn["jsonString"]=str(dictIn)
+        strURL=strURL+"ailink_info"
+        responseOut=requests.get(strURL,params=dictIn)
+        dictOut=responseOut.json()
+        dictDraw["strAIWord"]=dictOut["strAIWord"]
+        dictDraw["strAICategory"]=dictOut["strAICategory"]
+        dictDraw["strAILength"]=dictOut["strAILength"]
+        dictDraw["strAIHint"]=dictOut["strAIHint"]
+        #
+        # dictAILINK=dict()
+        # AILINK_Open(dictAILINK)
+        # strTemp=AILINK_GetWord(dictAILINK)
+        # dictDraw["strAIWord"]=dictAILINK["strGuessWord"].upper()
+        # dictDraw["strAICategory"]=dictAILINK["strGuessCategory"]
+        # dictDraw["strAILength"]=str(dictAILINK["nGuessLength"])
+        # strAIHint=AILINK_GetHint(dictAILINK,dictDraw["strAIWord"])
+        # AILINK_Close(dictAILINK)
+        # dictAILINK.clear()
+        # dictAILINK=None
+        # dictDraw["strAIHint"]=strAIHint
         #
         dictDraw = APP_win(dictDraw,strSession,
                             strWordGuess,strUsername)
@@ -619,21 +651,19 @@ def home():
     strSession=GLOBALKEEP_GetNewSessionID(dictHome,"globalkeep.txt")
     dictHome["strFileSave"]=strSession
     #
-    responseOut=request.get("http://127.0.0.1:5052/register_getwhere/ailink")
-    strOut=responseOut.json()
-    dictOut=eval(strOut)
+    responseOut=requests.get("http://127.0.0.1:5052/register_getwhere/ailink")
+    dictOut=responseOut.json()
     strURL=dictOut["return"]
     dictIn=dict()
     dictIn["function"]="API_AILINK_GetInfo()"
     dictIn["jsonString"]=str(dictHome)
     strURL=strURL+"ailink_info"
-    responseOut=request.get(strURL,params=dictIn)
-    strOut=str(responseOut.json())
-    dictOut=eval(strOut)
-    dictHome["strAIWord"]=strOut["strAIWord"]
-    dictHome["strAICategory"]=strOut["strAICategory"]
-    dictHome["strAILength"]=strOut["strAILength"]
-    dictHome["strAIHint"]=strOut["strAIHint"]
+    responseOut=requests.get(strURL,params=dictIn)
+    dictOut=responseOut.json()
+    dictHome["strAIWord"]=dictOut["strAIWord"]
+    dictHome["strAICategory"]=dictOut["strAICategory"]
+    dictHome["strAILength"]=dictOut["strAILength"]
+    dictHome["strAIHint"]=dictOut["strAIHint"]
     #
     # dictAILINK=dict()
     # AILINK_Open(dictAILINK)
